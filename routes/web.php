@@ -18,9 +18,11 @@ Route::get('/', function () {
 Route::get("tests/test", "TestController@index");
 
 #REST
-Route:: resource("contacts", "ContactFormController")->only([
-    "index", "show"
-]);
+Route::get("contact/index", "ContactFormController@index");
 // Auth::routes();
+
+Route::group(["prefix" => "contact", "middlware" => "auth"], function(){
+    Route::get("index", "ContactFormController@index");
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
