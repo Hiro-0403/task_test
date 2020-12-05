@@ -21,8 +21,9 @@ Route::get("tests/test", "TestController@index");
 Route::get("contact/index", "ContactFormController@index");
 // Auth::routes();
 
-Route::group(["prefix" => "contact", "middlware" => "auth"], function(){
+Route::group(["prefix" => "contact", "middleware" => "auth"], function(){
     Route::get("index", "ContactFormController@index");
 });
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
