@@ -25,7 +25,7 @@ class ContactFormController extends Controller
         $contacts = DB::table("contact_forms")
         ->select("id", "your_name", "title", "created_at")
         ->orderby("created_at", "desc")
-        ->get();
+        ->paginate(20);
 
         // dd($contacts);
         #処理を止めて変数の中身をみることができる。
