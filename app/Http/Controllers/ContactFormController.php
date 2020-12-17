@@ -16,16 +16,24 @@ class ContactFormController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $search = $request->input("search");
+
        #エロくワント　ORマッパー
         // $contacts = ContactForm::all();
 
         #クエリビルダ
-        $contacts = DB::table("contact_forms")
-        ->select("id", "your_name", "title", "created_at")
-        ->orderby("created_at", "desc")
-        ->paginate(20);
+        // $contacts = DB::table("contact_forms")
+        // ->select("id", "your_name", "title", "created_at")
+        // ->orderby("created_at", "desc")
+        // ->paginate(20);
+        #検索フォーム用
+        $query = DB::table("contact_forms");
+        $query->select("id", "your_name", "title", "created_at");
+        $query->orderBy("created_at", "asc");
+        $contacts = $query->paginate(20);
 
         // dd($contacts);
         #処理を止めて変数の中身をみることができる。
