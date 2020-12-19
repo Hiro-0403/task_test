@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get("tests/test", "TestController@index");
 
+Route::get("shops/index", "ShopController@index");
 #REST
 Route::get("contact/index", "ContactFormController@index");
 // Auth::routes();
